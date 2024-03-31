@@ -1,19 +1,20 @@
 import { Canvas } from '@react-three/fiber'
 import './App.css'
-import { Sphere } from '@react-three/drei'
+import { OrbitControls} from '@react-three/drei'
+import PointCircle from './components/PointCircle'
 
 function App() {
-  
-
   return (
-    <div className='relative'>      
-      <Canvas className='bg-[#101010]' style={{height:'100vh'}}>
+    <div className='relative'>
+      <Canvas
+      camera={{position:[6,-2,-8]}}
+       className='bg-[#101010]' style={{ height: '100vh' }}>
+        <OrbitControls maxDistance={20} minDistance={10} />
         <directionalLight />
-        <pointLight position={[-30,0,-30]} power={10.0} />
-        <Sphere position={[0,0,0]} args={[0.1,20,20]}>
-
-        </Sphere>
+        <pointLight position={[-30, 0, -30]} power={10.0} />
+        <PointCircle />
       </Canvas>
+        <h1 className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-slate-200 font-medium text-3xl pointer-events-none'>ThreadsClone by DovalStudio</h1>
     </div>
   )
 }
